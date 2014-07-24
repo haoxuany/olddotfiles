@@ -7,8 +7,10 @@ set nocompatible "Don't use compatibility mode
 "a laptop is so close to the spacebar it screws up typing in insert mode)
 set mouse=n
 set ttymouse=xterm2 "for whatever reason you have to do this to resize windows in vim within tmux
+set cursorline "highlight current line
 
 set autoread "Automatically read files if modified outside of vim
+set switchbuf=useopen "REALLY useful, doesn't screw up file layout
 set tabstop=4 "How many columns a tab actually is displayed
 set softtabstop=4 
 "This is pure B.S. Why would I wanna do otherwise? Make sure tabstop = softabstop
@@ -20,8 +22,7 @@ filetype plugin indent on "Reads indentation file
 syntax on "Displays syntax
 
 set number "Numbering
-set ignorecase "So there's no need to type Caps for searching, saves time. Requirement for next setting.
-set smartcase "So that when I DO type Caps, I mean it.
+set ignorecase smartcase "So there's no need to type Caps for searching, saves time. Also makes sure that Caps do get read
 set hidden "In humanspeak, you don't have to be prompted every time you load from an unsaved buffer.
 set is "Incremental search. So useful. Used for <C-a>/<C-x>.
 "treat everything as decimals
@@ -29,14 +30,75 @@ set nrformats=
 "Adds current file directory as search path.
 set path+=%:h
 
-"mappings
-let mapleader = "," "used for easier typing of Command-T
-map <F7> <Esc>mA:mak<CR><CR><CR>
+"Mappings
+"
+"Leader Mappings
+let mapleader = "," "used for easier typing
+"Quickly switches to previous file
+nnoremap <leader><leader> <c-^> 
+"Quick make
+nnoremap <leader>m :mak<CR><CR><CR>:cwin<CR>
+
+"Quickfix Toggling, stolen and modified from Gary Bernhardt
+function! GetBufferList()
+	redir =>buflist
+	silent! ls
+	redir END
+	return buflist
+endfunction
+
+function! BufferIsOpen(bufname)
+	let buflist = GetBufferList()
+	for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+		if bufwinnr(bufnum) != -1
+			return 1
+		endif
+	endfor
+	return 0
+endfunction
+									  
+function! ToggleQuickfix()
+	if BufferIsOpen("Quickfix List")
+		cclose
+	else
+		cwin
+	endif
+endfunction
+
+nnoremap <leader>q :call ToggleQuickfix()<cr>
+nnoremap <leader>j :cnext<cr>
+nnoremap <leader>k :cprev<cr>
+
+"Use ,f for fuzzy search
+nnoremap <silent> <leader>f :CommandT<CR>
+"Use Esc for closing
+let g:CommandTCancelMap=['<C-[>', '<C-c>', '<Esc>']
+"Maps %% to current file directory
+cnoremap %% <c-r>=expand('%:h').'/'<cr>
+nnoremap <leader>e :edit %%
+nnoremap <leader>v :view %%
+
+"
+"Other Maps
 map <F8> <Esc>:cwin<CR>
 nmap <C-j> o<Esc>k
 nmap <C-k> O<Esc>j
 cmap <C-k> <Up>
 cmap <C-j> <Down>
+
+"TAB Completion
+"Indent if at beginning of a line, otherwise autocompletes, 
+"stolen from Gary Bernhardt.
+function! InsertTabWrapper()
+	let col = col('.') - 1
+	if !col || getline('.')[col - 1] !~ '\k'
+		return "\<tab>"
+	else
+		return "\<c-p>"
+	endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<CR>
+inoremap <s-tab> <c-n>
 
 "Use predefined ctags file for standard libraries. In retrospect not such a
 "great idea. Remove?
@@ -48,5 +110,5 @@ runtime macros/matchit.vim
 "Turn on omnicompletion
 set omnifunc=syntaxcomplete#Complete
 "Because <C-x><C-o> is literally the worst mapping for completion
-imap <leader><Tab> <C-x><C-o>
+"imap <leader><Tab> <C-x><C-o>
 
