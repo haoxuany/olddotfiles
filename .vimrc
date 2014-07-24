@@ -6,6 +6,7 @@ set nocompatible "Don't use compatibility mode
 "use mouse (for resizing, in normal mode only! Because the %#$&ing touchpad on
 "a laptop is so close to the spacebar it screws up typing in insert mode)
 set mouse=n
+set ttymouse=xterm2 "for whatever reason you have to do this to resize windows in vim within tmux
 
 set autoread "Automatically read files if modified outside of vim
 set tabstop=4 "How many columns a tab actually is displayed
@@ -37,9 +38,9 @@ nmap <C-k> O<Esc>j
 cmap <C-k> <Up>
 cmap <C-j> <Down>
 
-"Use predefined ctags file for standard libraries. In retrospec not such a
+"Use predefined ctags file for standard libraries. In retrospect not such a
 "great idea. Remove?
-set tags+=~/.vim/systags
+set tags+=~/.vim/systags,~/.vim/qttags
 "Don't really need that much history
 set history=30
 "Use % to switch between open and close structures, #if/#endif etc.
