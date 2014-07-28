@@ -79,7 +79,7 @@ nnoremap <silent> <leader>v :vne<CR><c-w>L
 let g:CommandTCancelMap=['<C-[>', '<C-c>', '<Esc>']
 "Maps %% to current file directory
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
-nnoremap <leader>e :edit %%
+nmap <leader>e :edit %%
 
 "Other Maps
 nmap <C-j> o<Esc>k
