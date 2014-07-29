@@ -85,10 +85,10 @@ cnoremap %% <C-R>=expand('%:h').'/'<CR>
 nmap <leader>e :edit %%
 
 "Other Maps
-nmap <C-j> o<Esc>k
-nmap <C-k> O<Esc>j
-cmap <C-k> <Up>
-cmap <C-j> <Down>
+nnoremap <C-j> o<Esc>k
+nnoremap <C-k> O<Esc>j
+cnoremap <C-k> <Up>
+cnoremap <C-j> <Down>
 
 "TAB Completion
 "Indent if at beginning of a line, otherwise autocompletes, 
