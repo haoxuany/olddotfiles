@@ -33,6 +33,9 @@ set path+=%:h
 "
 "Leader Mappings
 let mapleader = "," "used for easier typing
+"Quickly change vimrc, it's more of a temporary setting
+nnoremap <leader>ev :vsp $MYVIMRC<CR><c-w>L
+nnoremap <leader>sv :source $MYVIMRC<CR>
 "Quickly switches to previous file
 nnoremap <leader><leader> <c-^> 
 "Quick make
@@ -113,3 +116,8 @@ runtime macros/matchit.vim
 "Because <C-x><C-o> is literally the worst mapping for completion
 "imap <leader><Tab> <C-x><C-o>
 
+"This part is to screw with people who still use arrow keys :D
+nnoremap <Up> :echo "@#$% you!!"<CR>
+nnoremap <Down> :echo "@#$% you!!"<CR>
+nnoremap <Right> :echo "@#$% you!!"<CR>
+nnoremap <Left> :echo "@#$% you!!"<CR>
