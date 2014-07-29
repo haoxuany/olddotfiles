@@ -4,16 +4,16 @@ execute pathogen#infect()
 set nocompatible "Don't use compatibility mode
 
 "use mouse (for resizing, in normal mode only! Because the %#$&ing touchpad on
-"a laptop is so close to the spacebar it sCRews up typing in insert mode)
+"a laptop is so close to the spacebar it screws up typing in insert mode)
 set mouse=n
 set ttymouse=xterm2 "for whatever reason you have to do this to resize windows in vim within tmux
 
 set autoread "Automatically read files if modified outside of vim
-set switchbuf=useopen "REALLY useful, doesn't sCRew up file layout
+set switchbuf=useopen "REALLY useful, doesn't screw up file layout
 set tabstop=4 "How many columns a tab actually is displayed
 set softtabstop=4 
 "This is pure B.S. Why would I wanna do otherwise? Make sure tabstop = softabstop
-"Don't be a $%@^# and sCRew up your own formatting
+"Don't be a $%@^# and screw up your own formatting
 set shiftwidth=4 "How many spaces <</>> or autoindent will use
 set noexpandtab "Don't expand tabs ever
 set autoindent "Autoindent, don't use smartindent/cindent because of filetype indent
@@ -23,7 +23,7 @@ syntax on "Displays syntax
 set number "Numbering
 set ignorecase smartcase "So there's no need to type Caps for searching, saves time. Also makes sure that Caps do get read
 set hidden "In humanspeak, you don't have to be prompted every time you load from an unsaved buffer.
-set is "InCRemental search. So useful. Used for <C-a>/<C-x>.
+set is "Incremental search. So useful. Used for <C-a>/<C-x>.
 "treat everything as decimals
 set nrformats=
 "Adds current file directory as search path.
@@ -107,9 +107,9 @@ set tags+=~/.vim/systags,~/.vim/qttags
 "Don't really need that much history
 set history=30
 "Use % to switch between open and close structures, #if/#endif etc.
-runtime maCRos/matchit.vim
+runtime macros/matchit.vim
 "Turn on omnicompletion
-set omnifunc=syntaxcomplete#Complete
+"set omnifunc=syntaxcomplete#Complete
 "Because <C-x><C-o> is literally the worst mapping for completion
 "imap <leader><Tab> <C-x><C-o>
 
