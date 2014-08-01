@@ -76,6 +76,7 @@ nnoremap <silent> <leader>k :cprev<CR>
 "Use ,f for fuzzy search
 nnoremap <silent> <leader>f :CommandT<CR>
 let g:CommandTInputDebounce = 100
+let g:CommandTAcceptSelectionMap = ['<CR>', '<Space>']
 let g:CommandTAlwaysShowDotFiles = 1
 let g:CommandTBackspaceMap = ['<BS>', '<C-h>']
 let g:CommandTAcceptSelectionVSplitMap = ['<S-CR>', '<C-v>']
@@ -88,7 +89,7 @@ nnoremap <silent> <leader>v :vne<CR><c-w>L
 "Use Esc for closing
 let g:CommandTCancelMap=['<C-[>', '<C-c>', '<Esc>']
 "Maps %% to current file directory
-cnoremap %% <C-R>=expand('%:h').'/'<CR>
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 nmap <leader>e :edit %%
 
 "Other Maps
