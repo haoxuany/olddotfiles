@@ -1,7 +1,9 @@
 "Use plugins vim-surround, vim-commentary, Command-T, vim-unimpaired
+"Use colorscheme vim-kolor
 "Manage with pathogen
 execute pathogen#infect()
 set nocompatible "Don't use compatibility mode
+colorscheme kolor
 
 "use mouse (for resizing, in normal mode only! Because the %#$&ing touchpad on
 "a laptop is so close to the spacebar it screws up typing in insert mode)
