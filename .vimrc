@@ -73,6 +73,11 @@ nnoremap <silent> <leader>k :cprev<CR>
 
 "Use ,f for fuzzy search
 nnoremap <silent> <leader>f :CommandT<CR>
+let g:CommandTInputDebounce = 100
+let g:CommandTAlwaysShowDotFiles = 1
+let g:CommandTBackspaceMap = ['<BS>', '<C-h>']
+let g:CommandTAcceptSelectionVSplitMap = ['<S-CR>', '<C-v>']
+let g:CommandTCursorLeftMap = ['<Left>']
 
 "Mappings to open split windows
 nnoremap <silent> <leader>w :new<CR><c-w>J
