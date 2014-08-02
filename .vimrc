@@ -28,8 +28,8 @@ set hidden "In humanspeak, you don't have to be prompted every time you load fro
 set is "Incremental search. So useful. Used for <C-a>/<C-x>.
 "treat everything as decimals
 set nrformats=
-"Adds current file directory as search path.
-set path+=%:h
+"Match longest satisfying and list all matches
+set wildmode=longest,list
 
 "Mappings
 "
@@ -98,6 +98,17 @@ nnoremap <C-k> O<Esc>j
 cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 
+"Use *, # in visual mode for selection search
+function! s:VSetSearch()
+	let temp = @s
+	norm! gv"sy
+	let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+	let @s = temp
+endfunction
+
+xnoremap * :<c-u>call <SID>VSetSearch()<CR>/<c-r>=@/<CR><CR>
+xnoremap # :<c-u>call <SID>VSetSearch()<CR>?<c-r>=@/<CR><CR>
+
 "TAB Completion
 "Indent if at beginning of a line, otherwise autocompletes, 
 "stolen from Gary Bernhardt.
@@ -129,3 +140,38 @@ nnoremap <Up> :echo "@#$% you!!"<CR>
 nnoremap <Down> :echo "@#$% you!!"<CR>
 nnoremap <Right> :echo "@#$% you!!"<CR>
 nnoremap <Left> :echo "@#$% you!!"<CR>
+
+"Startify options (disable everything except custom messages
+let g:startify_custom_header = [
+			\ '		Commands to integrate in workflow:',
+			\ '		Choose vU over gUl for single letter upcase',
+			\ '		:put/pu {reg} | Put reg contents AFTER line, useful for macro editing',
+			\ '		:e! | Reload file(used to discard changes and argdo all files)',
+			\ '		gi | Goes back to last insert position and continue modifying',
+			\ '		g; | Move to previous change location', 
+			\ '		g, | Move to next change location',
+			\ '		<c-f> | Switch from Command-Line mode to Command-Line window', 
+			\ '		@: | Repeat last ex command',
+			\ '		:w !{prog} | Write to external pipe',
+			\ '		:r !{prog} | Read from external pipe',
+			\ "		Symbols $, ., 'm | Last line of file, current line, mark m ('< for visual start)",
+			\ '		:t, :m | Copy TO, MOVE to',
+			\ '		<c-v>, <c-k> | Insert character by unicode, Insert Digraph',
+			\ '		"[1-9], "" | Delete history register, Unnamed register, Black hole register',
+			\ '		"_, "+, "* | System clipboard register(Good for cutting), Primary register(used with middle mouse click)',
+			\ '		gp, gP | Putting without cursor movement',
+			\ '		<c-r><c-w> | Paste current word under cursor, also completes search',
+			\ '',
+			\ '		Regexes:(use verymagic \v)',
+			\ '		<, > | Word boundaries',
+			\ '		\zs, \ze | Selection boundaries',
+			\ '		=escape(@reg, getcmdtype().'') | Autoescapes / and ? when searching', 
+			\ '		(), \[1-9], %() | Capture and reference, uncapture',
+			\ '		\s | whitespace',
+			\ '		\w | Almost C-style word, used with \w+',
+			\ '		\_x, \r | x character class with EOL, <CR>',
+			\ '		//e | Offset :s, last character of search pattern, could be used as motion',
+			\]
+let g:startify_list_order = [ [''], 'bookmarks' ]
+let g:startify_custom_footer =
+      \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
