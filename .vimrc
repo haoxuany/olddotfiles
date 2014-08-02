@@ -1,5 +1,6 @@
 "Use plugins vim-surround, vim-commentary, Command-T, vim-unimpaired
 "Use colorscheme vim-kolor
+"Optional vim-startify
 "Manage with pathogen
 execute pathogen#infect()
 set nocompatible "Don't use compatibility mode

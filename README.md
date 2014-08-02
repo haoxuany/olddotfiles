@@ -44,9 +44,14 @@ Make dir to user bin (if not already present):
 
 And add new path to $PATH.  
 
-###Highly recommended:
-+
+### Highly recommended:
++ unimpaired.vim: https://github.com/tpope/vim-unimpaired.git  
++ vim-kolor: https://github.com/zeis/vim-kolor.git  
++ surround.vim: https://github.com/tpope/vim-surround.git  
++ commentary.vim: https://github.com/tpope/vim-commentary.git  
 
+### Optional but nice to have:
++ vim-startify: https://github.com/mhinz/vim-startify.git  
 
 ## Todos
 + Reformat vimrc for better performance and readability  
