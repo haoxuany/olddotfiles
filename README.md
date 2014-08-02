@@ -7,6 +7,7 @@ So far it includes:
 
 ## Installation
 Simply clone with:  
+
 	git clone https://github.com/haoxuany/Dotfiles.git
 
 And install plugins listed below, some of the plugins require more than one installation step.  
