@@ -29,6 +29,7 @@ syntax on "Displays syntax
 
 set number "Numbering
 set ignorecase smartcase infercase "So there's no need to type Caps for searching, saves time. Also makes sure that Caps do get read, and autocomplete are inferred
+set complete=.,i,d,t,w,b
 set hidden "In humanspeak, you don't have to be prompted every time you load from an unsaved buffer.
 set is "Incremental search. So useful. Used for <C-a>/<C-x>.
 "treat everything as decimals
@@ -132,8 +133,8 @@ inoremap <tab> <c-r>=InsertTabWrapper()<CR>
 inoremap <s-tab> <c-n>
 
 "Use predefined ctags file for standard libraries. In retrospect not such a
-"great idea. Remove?
-set tags+=~/.vim/systags,~/.vim/qttags
+"great idea. Remove? (Maybe autocommand?)
+"set tags+=~/.vim/systags,~/.vim/qttags
 "Don't really need that much history
 set history=30
 "Use % to switch between open and close structures, #if/#endif etc.
@@ -174,6 +175,7 @@ let g:pstart_header = [
 			\ '		:g/{regex}/[range] {cmd} | Apply cmd on all match regexes (can specify range, use :v for inversion)',
 			\ '		:g /{start}/ .,{finish} {cmd} | Specialized range form, places cursor at {start} and executes from .(now) to {finish}',
 			\ '		<c-e> | Exit from autocomplete',
+			\ '		<c-x><c-l>, <c-x><c-f> | Line autocompletion and filename autocompletion(remember to set relative path and cd - back)', 
 			\ '',
 			\ '		Regexes:(use verymagic \v)',
 			\ '		<, > | Word boundaries',
