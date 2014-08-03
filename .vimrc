@@ -1,6 +1,6 @@
 "Use plugins vim-surround, vim-commentary, Command-T, vim-unimpaired
 "Use colorscheme vim-kolor
-"Optional vim-startify
+"Optional vim-perv-startify
 "Manage with pathogen
 execute pathogen#infect()
 set nocompatible "Don't use compatibility mode
@@ -98,6 +98,7 @@ nnoremap <C-j> o<Esc>k
 nnoremap <C-k> O<Esc>j
 cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
+nnoremap <f5> :!ctags -R<cr><cr>
 
 "Use *, # in visual mode for selection search
 function! s:VSetSearch()
@@ -142,8 +143,9 @@ nnoremap <Down> :echo "@#$% you!!"<CR>
 nnoremap <Right> :echo "@#$% you!!"<CR>
 nnoremap <Left> :echo "@#$% you!!"<CR>
 
-"Startify options (disable everything except custom messages
-let g:startify_custom_header = [
+"Perverted startify options
+let g:pstart_enable = 1
+let g:pstart_header = [
 			\ '		Commands to integrate in workflow:',
 			\ '		Choose vU over gUl for single letter upcase',
 			\ '		:put/pu {reg} | Put reg contents AFTER line, useful for macro editing',
@@ -157,15 +159,20 @@ let g:startify_custom_header = [
 			\ '		:r !{prog} | Read from external pipe',
 			\ "		Symbols $, ., 'm | Last line of file, current line, mark m ('< for visual start)",
 			\ '		:t, :m | Copy TO, MOVE to',
-			\ '		<c-v>, <c-k> | Insert character by unicode, Insert Digraph',
 			\ '		"[1-9], "" | Delete history register, Unnamed register, Black hole register',
 			\ '		"_, "+, "* | System clipboard register(Good for cutting), Primary register(used with middle mouse click)',
 			\ '		gp, gP | Putting without cursor movement',
 			\ '		<c-r><c-w> | Paste current word under cursor, also completes search',
+			\ '		<c-r>/ | The last search register',
+			\ '		~, &, g&, :&& | Last replacement field, last flags, substitute last everything, substitute last everything on range', 
+			\ '		:g/{regex}/[range] {cmd} | Apply cmd on all match regexes (can specify range, use :v for inversion)',
+			\ '		:g /{start}/ .,{finish} {cmd} | Specialized range form, places cursor at {start} and executes from .(now) to {finish}',
 			\ '',
 			\ '		Regexes:(use verymagic \v)',
 			\ '		<, > | Word boundaries',
 			\ '		\zs, \ze | Selection boundaries',
+			\ '		\=@reg | Eval vimscript : write contents of register',
+			\ '		\=submatch(0) | Eval vimscript : all of substitute match field',
 			\ '		=escape(@reg, getcmdtype().'') | Autoescapes / and ? when searching', 
 			\ '		(), \[1-9], %() | Capture and reference, uncapture',
 			\ '		\s | whitespace',
@@ -173,6 +180,5 @@ let g:startify_custom_header = [
 			\ '		\_x, \r | x character class with EOL, <CR>',
 			\ '		//e | Offset :s, last character of search pattern, could be used as motion',
 			\]
-let g:startify_list_order = [ [''], 'bookmarks' ]
-let g:startify_custom_footer =
+let g:pstart_footer =
       \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']

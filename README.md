@@ -51,7 +51,8 @@ And add new path to $PATH.
 + commentary.vim: https://github.com/tpope/vim-commentary.git  
 
 ### Optional but nice to have:
-+ vim-startify: https://github.com/mhinz/vim-startify.git  
++ vim-perv-startify: https://github.com/haoxuany/vim-perv-startify.git (Perverted by me :D)  
++ vim-startify: https://github.com/mhinz/vim-startify.git (Deprecated, use perv-startify)  
 
 ## Todos
 + Reformat vimrc for better performance and readability  
