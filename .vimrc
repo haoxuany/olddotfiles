@@ -11,6 +11,10 @@ colorscheme kolor
 set mouse=n
 set ttymouse=xterm2 "for whatever reason you have to do this to resize windows in vim within tmux
 
+"Use ack-grep to replace grep
+set grepprg=ack-grep\ --nogroup\ --column\ $*
+set grepformat=%f:%l:%c:%m
+
 set autoread "Automatically read files if modified outside of vim
 set switchbuf=useopen "REALLY useful, doesn't screw up file layout
 set tabstop=4 "How many columns a tab actually is displayed
@@ -24,7 +28,7 @@ filetype plugin indent on "Reads indentation file
 syntax on "Displays syntax
 
 set number "Numbering
-set ignorecase smartcase "So there's no need to type Caps for searching, saves time. Also makes sure that Caps do get read
+set ignorecase smartcase infercase "So there's no need to type Caps for searching, saves time. Also makes sure that Caps do get read, and autocomplete are inferred
 set hidden "In humanspeak, you don't have to be prompted every time you load from an unsaved buffer.
 set is "Incremental search. So useful. Used for <C-a>/<C-x>.
 "treat everything as decimals
@@ -98,6 +102,8 @@ nnoremap <C-j> o<Esc>k
 nnoremap <C-k> O<Esc>j
 cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
+inoremap <C-k> <c-p>
+inoremap <C-j> <c-n>
 nnoremap <f5> :!ctags -R<cr><cr>
 
 "Use *, # in visual mode for selection search
@@ -167,6 +173,7 @@ let g:pstart_header = [
 			\ '		~, &, g&, :&& | Last replacement field, last flags, substitute last everything, substitute last everything on range', 
 			\ '		:g/{regex}/[range] {cmd} | Apply cmd on all match regexes (can specify range, use :v for inversion)',
 			\ '		:g /{start}/ .,{finish} {cmd} | Specialized range form, places cursor at {start} and executes from .(now) to {finish}',
+			\ '		<c-e> | Exit from autocomplete',
 			\ '',
 			\ '		Regexes:(use verymagic \v)',
 			\ '		<, > | Word boundaries',
