@@ -15,6 +15,7 @@ set ttymouse=xterm2 "for whatever reason you have to do this to resize windows i
 set grepprg=ack-grep\ --nogroup\ --column\ $*
 set grepformat=%f:%l:%c:%m
 
+set winwidth=79 "So it's more bearable to read
 set autoread "Automatically read files if modified outside of vim
 set switchbuf=useopen "REALLY useful, doesn't screw up file layout
 set tabstop=4 "How many columns a tab actually is displayed
@@ -26,6 +27,7 @@ set noexpandtab "Don't expand tabs ever
 set autoindent "Autoindent, don't use smartindent/cindent because of filetype indent
 filetype plugin indent on "Reads indentation file
 syntax on "Displays syntax
+set foldmethod=syntax "Fold based on syntax
 
 set number "Numbering
 set ignorecase smartcase infercase "So there's no need to type Caps for searching, saves time. Also makes sure that Caps do get read, and autocomplete are inferred
@@ -36,6 +38,8 @@ set is "Incremental search. So useful. Used for <C-a>/<C-x>.
 set nrformats=
 "Match longest satisfying and list all matches
 set wildmode=longest,list
+"Open window at the bottom or right
+set splitbelow splitright
 
 "Mappings
 "
@@ -87,13 +91,12 @@ let g:CommandTAlwaysShowDotFiles = 1
 let g:CommandTBackspaceMap = ['<BS>', '<C-h>']
 let g:CommandTAcceptSelectionVSplitMap = ['<S-CR>', '<C-v>']
 let g:CommandTCursorLeftMap = ['<Left>']
+let g:CommandTCancelMap=['<C-[>', '<C-c>', '<Esc>']
 
 "Mappings to open split windows
-nnoremap <silent> <leader>w :new<CR><c-w>J
-nnoremap <silent> <leader>v :vne<CR><c-w>L
+nnoremap <silent> <leader>w :new<CR>
+nnoremap <silent> <leader>v :vne<CR>
 
-"Use Esc for closing
-let g:CommandTCancelMap=['<C-[>', '<C-c>', '<Esc>']
 "Maps %% to current file directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 nmap <leader>e :edit %%
@@ -132,9 +135,12 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<CR>
 inoremap <s-tab> <c-n>
 
-"Use predefined ctags file for standard libraries. In retrospect not such a
-"great idea. Remove? (Maybe autocommand?)
-"set tags+=~/.vim/systags,~/.vim/qttags
+"Use autocmd for library tag completion, still searching for better solution
+" if has('autocmd')
+" 	autocmd FileType c setlocal tags+=~/.vim/systags
+" 	autocmd FileType cpp setlocal tags+=~/.vim/qttags
+" endif
+	
 "Don't really need that much history
 set history=30
 "Use % to switch between open and close structures, #if/#endif etc.
@@ -155,6 +161,7 @@ let g:pstart_enable = 1
 let g:pstart_header = [
 			\ '		Commands to integrate in workflow:',
 			\ '		Choose vU over gUl for single letter upcase',
+			\ '		:x | Same as :wq',
 			\ '		:put/pu {reg} | Put reg contents AFTER line, useful for macro editing',
 			\ '		:e! | Reload file(used to discard changes and argdo all files)',
 			\ '		gi | Goes back to last insert position and continue modifying',
@@ -190,4 +197,4 @@ let g:pstart_header = [
 			\ '		//e | Offset :s, last character of search pattern, could be used as motion',
 			\]
 let g:pstart_footer =
-      \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
+      \ map(split(system('fortune | cowthink -f tux'), '\n'), '"   ". v:val') + ['','']
