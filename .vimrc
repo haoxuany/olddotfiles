@@ -158,43 +158,5 @@ nnoremap <Left> :echo "@#$% you!!"<CR>
 
 "Perverted startify options
 let g:pstart_enable = 1
-" let g:pstart_header = [
-" 			\ '		Commands to integrate in workflow:',
-" 			\ '		Choose vU over gUl for single letter upcase',
-" 			\ '		:x | Same as :wq',
-" 			\ '		:put/pu {reg} | Put reg contents AFTER line, useful for macro editing',
-" 			\ '		:e! | Reload file(used to discard changes and argdo all files)',
-" 			\ '		gi | Goes back to last insert position and continue modifying',
-" 			\ '		g; | Move to previous change location', 
-" 			\ '		g, | Move to next change location',
-" 			\ '		<c-f> | Switch from Command-Line mode to Command-Line window', 
-" 			\ '		@: | Repeat last ex command',
-" 			\ '		:w !{prog} | Write to external pipe',
-" 			\ '		:r !{prog} | Read from external pipe',
-" 			\ "		Symbols $, ., 'm | Last line of file, current line, mark m ('< for visual start)",
-" 			\ '		:t, :m | Copy TO, MOVE to',
-" 			\ '		"[1-9], "" | Delete history register, Unnamed register, Black hole register',
-" 			\ '		"_, "+, "* | System clipboard register(Good for cutting), Primary register(used with middle mouse click)',
-" 			\ '		gp, gP | Putting without cursor movement',
-" 			\ '		<c-r><c-w> | Paste current word under cursor, also completes search',
-" 			\ '		<c-r>/ | The last search register',
-" 			\ '		~, &, g&, :&& | Last replacement field, last flags, substitute last everything, substitute last everything on range', 
-" 			\ '		:g/{regex}/[range] {cmd} | Apply cmd on all match regexes (can specify range, use :v for inversion)',
-" 			\ '		:g /{start}/ .,{finish} {cmd} | Specialized range form, places cursor at {start} and executes from .(now) to {finish}',
-" 			\ '		<c-e> | Exit from autocomplete',
-" 			\ '		<c-x><c-l>, <c-x><c-f> | Line autocompletion and filename autocompletion(remember to set relative path and cd - back)', 
-" 			\ '',
-" 			\ '		Regexes:(use verymagic \v)',
-" 			\ '		<, > | Word boundaries',
-" 			\ '		\zs, \ze | Selection boundaries',
-" 			\ '		\=@reg | Eval vimscript : write contents of register',
-" 			\ '		\=submatch(0) | Eval vimscript : all of substitute match field',
-" 			\ '		=escape(@reg, getcmdtype().'') | Autoescapes / and ? when searching', 
-" 			\ '		(), \[1-9], %() | Capture and reference, uncapture',
-" 			\ '		\s | whitespace',
-" 			\ '		\w | Almost C-style word, used with \w+',
-" 			\ '		\_x, \r | x character class with EOL, <CR>',
-" 			\ '		//e | Offset :s, last character of search pattern, could be used as motion',
-" 			\]
 let g:pstart_header = map(split(system('cat ~/commands.txt'), '\n'), 'v:val') + ['', '']
 let g:pstart_footer = map(split(system('fortune | cowthink -f tux'), '\n'), '"   ". v:val') + ['','']
