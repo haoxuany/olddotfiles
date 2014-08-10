@@ -13,8 +13,8 @@
 		:r !{prog} | Read from external pipe
 		Symbols $, ., 'm | Last line of file, current line, mark m ('< for visual start)
 		:t, :m | Copy TO, MOVE to
-		"[1-9], "" | Delete history register, Unnamed register, Black hole register
-		"_, "+, "* | System clipboard register(Good for cutting), Primary register(used with middle mouse click)
+		"[1-9], "", "_ | Delete history register, Unnamed register, Black hole register
+		"+, "* | System clipboard register(Good for cutting), Primary register(used with middle mouse click)
 		gp, gP | Putting without cursor movement
 		<c-r><c-w> | Paste current word under cursor, also completes search
 		<c-r>/ | The last search register

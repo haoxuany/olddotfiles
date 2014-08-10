@@ -46,7 +46,7 @@ set splitbelow splitright
 "Leader Mappings
 let mapleader = "," "used for easier typing
 "Quickly change vimrc, it's more of a temporary setting
-nnoremap <leader>ev :vsp $MYVIMRC<CR><c-w>L
+nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 "Quickly switches to previous file
 nnoremap <leader><leader> <c-^> 
