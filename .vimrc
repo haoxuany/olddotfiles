@@ -15,6 +15,8 @@ set ttymouse=xterm2 "for whatever reason you have to do this to resize windows i
 set grepprg=ack-grep\ --nogroup\ --column\ $*
 set grepformat=%f:%l:%c:%m
 
+"Use man for K
+set keywordprg=
 set winwidth=79 "So it's more bearable to read
 set autoread "Automatically read files if modified outside of vim
 set switchbuf=useopen "REALLY useful, doesn't screw up file layout
@@ -40,6 +42,10 @@ set nrformats=
 set wildmode=longest,list
 "Open window at the bottom or right
 set splitbelow splitright
+"Delete everything with backspace
+set bs=indent,eol,start
+"Show operator pending commands
+set showcmd
 
 "Mappings
 "

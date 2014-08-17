@@ -45,6 +45,7 @@
 		zi | Invert 'foldenable'
 		zx | Recompute fold, when 'syntax' closes all folds
 		zj,zk | Move one fold at a time
+		<c-t> | Pop Tag from stack
 
 	Regexes:(use verymagic \v)
 		<, > | Word boundaries
