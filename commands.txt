@@ -1,7 +1,7 @@
 
 	Commands to integrate in workflow:
 		Choose vU over gUl for single letter upcase
-		:x | Same as :wq
+		z{num}<CR> | Resize height to num
 		:put/pu {reg} | Put reg contents AFTER line, useful for macro editing
 		:e! | Reload file(used to discard changes and argdo all files)
 		gi | Goes back to last insert position and continue modifying
@@ -23,7 +23,6 @@
 		:g /{start}/ .,{finish} {cmd} | Specialized range form, places cursor at {start} and executes from .(now) to {finish}
 		<c-e> | Exit from autocomplete
 		<c-x><c-l>, <c-x><c-f> | Line autocompletion and filename autocompletion(remember to set relative path and cd - back) 
-		<c-x><c-e> in bash | Edit command with vim
 		gm | Go to middle of screen line
 		g* | Partial match, search as if word is entered
 		gd, gD | Go to local/global declaration
@@ -49,12 +48,12 @@
 
 	Regexes:(use verymagic \v)
 		<, > | Word boundaries
-		zs, \ze | Selection boundaries
+		\zs, \ze | Selection boundaries
 		=@reg | Eval vimscript : write contents of register
 		=submatch(0) | Eval vimscript : all of substitute match field
 		=escape(@reg, getcmdtype().'') | Autoescapes / and ? when searching 
 		(), \[1-9], %() | Capture and reference, uncapture
-		s | whitespace
-		w | Almost C-style word, used with \w+
-		_x, \r | x character class with EOL, <CR>
+		\s | whitespace
+		\w | Almost C-style word, used with \w+
+		\_x, \r | x character class with EOL, <CR>
 		//e | Offset :s, last character of search pattern, could be used as motion

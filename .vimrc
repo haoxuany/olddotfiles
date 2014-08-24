@@ -8,14 +8,14 @@ colorscheme kolor
 
 "use mouse (for resizing, in normal mode only! Because the %#$&ing touchpad on
 "a laptop is so close to the spacebar it screws up typing in insert mode)
-set mouse=n
+set mouse=
 set ttymouse=xterm2 "for whatever reason you have to do this to resize windows in vim within tmux
 
 "Use ack-grep to replace grep
 set grepprg=ack-grep\ --nogroup\ --column\ $*
 set grepformat=%f:%l:%c:%m
 
-"Use man for K
+"Use :help for K
 set keywordprg=
 set winwidth=79 "So it's more bearable to read
 set autoread "Automatically read files if modified outside of vim
