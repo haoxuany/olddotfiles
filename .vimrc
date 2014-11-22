@@ -29,7 +29,7 @@ set noexpandtab "Don't expand tabs ever
 set autoindent "Autoindent, don't use smartindent/cindent because of filetype indent
 filetype plugin indent on "Reads indentation file
 syntax on "Displays syntax
-set foldmethod=syntax "Fold based on syntax
+" set foldmethod= "Fold based on syntax
 
 set number "Numbering
 set ignorecase smartcase infercase "So there's no need to type Caps for searching, saves time. Also makes sure that Caps do get read, and autocomplete are inferred
@@ -163,6 +163,18 @@ nnoremap <Right> :echo "@#$% you!!"<CR>
 nnoremap <Left> :echo "@#$% you!!"<CR>
 
 "Perverted startify options
-let g:pstart_enable = 1
-let g:pstart_header = map(split(system('cat ~/commands.txt'), '\n'), 'v:val') + ['', '']
-let g:pstart_footer = map(split(system('fortune | cowthink -f tux'), '\n'), '"   ". v:val') + ['','']
+let g:pstart_enable=1
+let g:pstart_header=map(split(system('cat ~/commands.txt'), '\n'), 'v:val') + ['', '']
+let g:pstart_footer=map(split(system('fortune | cowthink -f tux'), '\n'), '"   ". v:val') + ['','']
+
+"Emmet(Zencoding) Options
+let g:user_emmet_install_global=0
+autocmd FileType html,css EmmetInstall
+let g:user_emmet_leader_key='<C-y>'
+
+augroup vimrcEx
+	autocmd!
+	autocmd FileType python set sw=4 sts=4 ts=4 et
+augroup END
+
+let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.vim/bundle/emmet-vim/snippets.json')), "\n"))

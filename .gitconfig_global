@@ -1,0 +1,24 @@
+[user]
+	name = Haoxuan Aaron Yue
+	email = haoxuany@andrew.cmu.edu
+[core]
+	editor = vim
+[color]
+	ui = true
+[alias]
+	st = status
+	ci = commit --verbose
+	co = checkout
+	di = diff
+	dc = diff --cached
+	b = branch
+	aa = add --all
+	amend = commit --amend
+	fa = fetach --all
+	l = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+[push]
+	default = matching
+[merge]
+	tool = vimdiff
+[diff]
+	tool = vimdiff
