@@ -1,0 +1,26 @@
+
+# ignore case for bash completion
+set completion-ignore-case on
+
+# use vi mode for editing
+set editing-mode vi
+
+# mappings for command mode
+set keymap vi-command
+
+# ergonomics key bindings
+"\C-l": clear-screen
+"\C-a": beginning-of-line
+"\C-e": end-of-line
+# not sure why the <c-e> mapping doesn't work here
+
+# mappings for insert mode
+set keymap vi-insert
+
+# ergonomics key bindings
+"\C-l": clear-screen
+"\C-a": beginning-of-line
+"\C-e": end-of-line
+"\C-j": next-history
+"\C-k": previous-history
+

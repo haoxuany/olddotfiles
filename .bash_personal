@@ -9,6 +9,8 @@ shopt -s histappend
 
 # Unbreak broken, non-colored terminal
 export TERM='xterm-color'
+
+# Standard Aliases
 alias ls='ls --color=auto -G'
 alias ll='ls --color=auto -laGF'
 alias l='ls --color=auto -CF'
@@ -16,6 +18,12 @@ alias vi='vim'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+
+# Defaults
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
 export EDITOR=vi
+
+# Fix broken readline <c-e> mapping for vi-command mode
+bind -m vi-command -r '"\C-e"'
+bind -m vi-command '"\C-e": end-of-line'
