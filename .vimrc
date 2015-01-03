@@ -172,9 +172,22 @@ let g:user_emmet_install_global=0
 autocmd FileType html,css EmmetInstall
 let g:user_emmet_leader_key='<C-y>'
 
+" function! CompileLatex()
+" 	Latexmk!
+" 	LatexmkStop
+" 	LatexmkClean
+" 	LatexmkStop
+" 	cwin
+" endfunction
+
 augroup vimrcEx
 	autocmd!
 	autocmd FileType python set sw=4 sts=4 ts=4 et
+	autocmd FileType tex set smartindent noautoindent
+	autocmd FileType tex nnoremap <buffer> <leader>n :LatexView<CR>
+	autocmd FileType tex nnoremap <silent><buffer> <leader>m :norm <LocalLeader>ll<LocalLeader>lc<CR>
 augroup END
 
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.vim/bundle/emmet-vim/snippets.json')), "\n"))
+
+let g:ctrlp_cmd = 'CtrlPBuffer'

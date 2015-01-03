@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Clean prompt
-export PS1='\[\e[01;32m\]\w\[\e[0m\]\[\e[00;37m\] \\$\[\e[0m\] '
+export PS1='$(pgrep vim > /dev/null && echo "\[\e[01;31m\](vim) ")\[\e[01;32m\]\w\[\e[00;37m\] \\$ '
+
 # Erase duplicates in history
 export HISTCONTROL=erasedups
 # Append to the history file when exiting instead of overwriting it
@@ -18,6 +19,10 @@ alias vi='vim'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias ev='evince'
+alias otex='vi -O *.tex'
+alias oc='vi -O *.c'
+alias ocpp='vi -O *.cpp'
 
 # Defaults
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
@@ -27,3 +32,7 @@ export EDITOR=vi
 # Fix broken readline <c-e> mapping for vi-command mode
 bind -m vi-command -r '"\C-e"'
 bind -m vi-command '"\C-e": end-of-line'
+
+# Set quick cd paths
+shopt -s cdable_vars
+prog=~/programming
