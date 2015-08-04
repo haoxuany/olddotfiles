@@ -1,5 +1,5 @@
 # My dotfiles
-
+Is no longer maintained. Migrated all vim settings to new repository for easier and more consistent management. Most of the settings are probably broken.
 ## Files
 So far it includes:  
 + tmux configuration files for xterm in bash (tested under kubuntu terminal, usually works fine)  
